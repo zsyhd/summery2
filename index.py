@@ -9,21 +9,19 @@ dashboard_data = {
     "avgPressure": 78.9
 }
 
-@app.get("/")
-def home():
-    return {"message": "Summery2 API is running"}
-
 @app.get("/dashboard")
 def get_dashboard():
     return dashboard_data
 
+
 @app.post("/dashboard/update")
 def update_dashboard(
-    totalEvents: int | None = None,
-    wellCount: int | None = None,
-    anomalyRate: float | None = None,
-    avgPressure: float | None = None
+    totalEvents: int = None,
+    wellCount: int = None,
+    anomalyRate: float = None,
+    avgPressure: float = None
 ):
+
     if totalEvents is not None:
         dashboard_data["totalEvents"] = totalEvents
 
